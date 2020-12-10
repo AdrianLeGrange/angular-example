@@ -1,0 +1,18 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="systemConfiguration.systemConfigurationForm">
+        <ng-template matStepLabel>System Configuration</ng-template>
+        <app-system-configuration #systemConfiguration></app-system-configuration>
+    </mat-step>
+    <mat-step> <!-- [stepControl]="fanConfiguration.fanConfigurationForm" -->
+        <ng-template matStepLabel>Fan Configuration</ng-template>
+        <app-fan-configuration #fanConfiguration></app-fan-configuration>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        Your system is successfully setup. Time to get growing!
+        <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

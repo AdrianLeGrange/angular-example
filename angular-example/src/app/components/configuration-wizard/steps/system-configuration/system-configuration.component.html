@@ -1,0 +1,19 @@
+<form [formGroup]="systemConfigurationForm">
+    <h2>System Configuration</h2>
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="nameInput" required>
+        <mat-error *ngIf="systemConfigurationForm.controls.nameInput.errors?.required">
+            System Name must be at least 5 characters
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="systemTypeSelect">
+          <mat-option *ngFor="let type of systemTypes" [value]="type.value">
+            {{ type.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</form>
+<button (click)="save()">DEBUG</button>
