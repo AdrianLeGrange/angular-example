@@ -1,1 +1,26 @@
-<p>fan-configuration works!</p>
+<form [formGroup]="fanConfigurationForm">
+    <h2>Fan Configuration</h2>
+    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="15px"> 
+      <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Flow Rate</mat-label>
+          <input app-numbers-only matInput formControlName="flowRateInput" required>
+          <mat-error *ngIf="fanConfigurationForm.controls.flowRateInput.errors?.max">
+            Flow Rate must be smaller than 10000 CFM
+          </mat-error>
+          <mat-error *ngIf="fanConfigurationForm.controls.flowRateInput.errors?.min">
+            Flow Rate must be greater than 0 CFM
+          </mat-error>
+          <mat-error *ngIf="fanConfigurationForm.controls.flowRateInput.errors?.required">
+            Flow Rate can not be empty
+          </mat-error>
+
+      </mat-form-field>
+
+      <mat-radio-group aria-label="Unit">
+        <mat-radio-button *ngFor="let airFlowRate of airFlowRates" [value]="airFlowRate.value">{{ airFlowRate.name }}</mat-radio-button>
+      </mat-radio-group>
+      
+
+
+      </div>
+</form>

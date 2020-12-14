@@ -45,6 +45,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestCompComponent } from './components/configuration-wizard/steps/test-comp/test-comp.component';
+import { FlexModule } from '@angular/flex-layout';
+import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
 
 @NgModule({
   declarations: [
@@ -52,11 +55,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ConfigurationWizardComponent,
     SystemConfigurationComponent,
     FanConfigurationComponent,
+    TestCompComponent,
+    NumbersOnlyDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

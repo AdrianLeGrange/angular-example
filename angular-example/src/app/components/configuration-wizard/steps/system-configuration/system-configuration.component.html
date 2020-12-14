@@ -1,5 +1,6 @@
 <form [formGroup]="systemConfigurationForm">
     <h2>System Configuration</h2>
+    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="15px"> 
     <mat-form-field class="form-field" appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput formControlName="nameInput" required>
@@ -7,6 +8,7 @@
             System Name must be at least 5 characters
         </mat-error>
     </mat-form-field>
+    
     <mat-form-field>
         <mat-label>Type</mat-label>
         <mat-select formControlName="systemTypeSelect">
@@ -15,5 +17,11 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      </div>
 </form>
 <button (click)="save()">DEBUG</button>
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px"> 
+<button mat-button color=primary (click) = "save()" >mat-button</button>
+<button mat-raised-button (click) = "save()" >mat-raised-button</button>
+<button mat-stroked-button  (click) = "save()" >mat-stroked-button</button>
+</div>
