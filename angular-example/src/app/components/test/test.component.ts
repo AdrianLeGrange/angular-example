@@ -57,7 +57,11 @@ export class TestComponent implements OnInit {
         break;
       }
       case HttpMethod.POST: {
-        response$ = this.testService.postRequest(endpointURL, JSON.parse(this.testForm.controls.requestBodyInput.value));
+        const body = this.getJSONBody();
+        if(body != null)
+          response$ = this.testService.postRequest(endpointURL, body);
+        else
+          return;
         break;
       }
       case HttpMethod.DELETE: {
@@ -65,7 +69,11 @@ export class TestComponent implements OnInit {
         break;
       }
       case HttpMethod.PUT: {
-        response$ = this.testService.putRequest(endpointURL, JSON.parse(this.testForm.controls.requestBodyInput.value));
+        const body = this.getJSONBody();
+        if(body != null)
+          response$ = this.testService.putRequest(endpointURL, body);
+        else
+          return;
         break;
       }
       default:{
@@ -80,11 +88,25 @@ export class TestComponent implements OnInit {
       this.testForm.controls.responseBodyOutput.setValue(JSON.stringify(res.body));
       console.debug("Response for " + endpointURL, res.body);
     }, (error: HttpErrorResponse) => {
-      console.debug('Error', error);
+      console.debug('Error', error.message);
       this.testForm.controls.responseCodeInput.setValue(error.status);
       this.testForm.controls.responseBodyOutput.setValue('');
     }).add(() => {
       this.isProcessing = false;
     });
+  }
+
+  getJSONBody(): string | null {
+    try{
+      let body = '';
+      body = JSON.parse(this.testForm.controls.requestBodyInput.value);
+      return body;
+    }
+    catch(e: any)
+    {
+      alert("Invalid JSON body");
+    }
+
+    return null;
   }
 }
