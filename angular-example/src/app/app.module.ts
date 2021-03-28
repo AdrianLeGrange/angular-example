@@ -48,6 +48,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TestCompComponent } from './components/configuration-wizard/steps/test-comp/test-comp.component';
 import { FlexModule } from '@angular/flex-layout';
 import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
+import { TestComponent } from './components/test/test.component';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -56,13 +58,15 @@ import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
     SystemConfigurationComponent,
     FanConfigurationComponent,
     TestCompComponent,
-    NumbersOnlyDirective
+    NumbersOnlyDirective,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexModule,
+    HttpClientModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -98,7 +102,8 @@ import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
     MatTreeModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

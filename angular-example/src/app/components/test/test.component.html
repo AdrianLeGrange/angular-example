@@ -1,0 +1,33 @@
+<h1>Debug Screen</h1>
+<div style="margin-left: 40px;">
+    <form [formGroup]="testForm" fxLayout="column" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+        <div fxLayout="column" fxLayoutAlign="stretch" fxLayoutGap="20px" style="width:50vw">
+            <mat-form-field appearance="fill">
+                <mat-label>Method</mat-label>
+                <mat-select formControlName="methodSelect">
+                  <mat-option *ngFor="let method of httpMethods" [value]="method">
+                    {{getHttpMethodDescription(method)}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                  <mat-label>Endpoint</mat-label>
+                  <input matInput formControlName="endpointInput">
+              </mat-form-field>
+        </div>
+        <mat-form-field style="width:50vw">
+            <mat-label>Request Body</mat-label>
+            <textarea matInput [placeholder]="requestBodyExample" formControlName="requestBodyInput" rows="10"></textarea>
+        </mat-form-field>
+        <button mat-fill-button color="primary" [disabled]="testForm.invalid || isProcessing" (click)="onSendRequest()">Send Request</button>
+        <mat-form-field>
+            <mat-label>Response Code</mat-label>
+            <input matInput formControlName="responseCodeInput" readonly>
+        </mat-form-field>
+        <mat-form-field style="width:50vw">
+            <mat-label>Response Body</mat-label>
+            <textarea matInput formControlName="responseBodyOutput" readonly rows="10"></textarea>
+        </mat-form-field>
+      </form>
+</div>
+  

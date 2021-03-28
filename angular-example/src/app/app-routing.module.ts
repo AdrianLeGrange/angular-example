@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Components
 import { ConfigurationWizardComponent } from './components/configuration-wizard/configuration-wizard.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: 'configuration-wizard', component: ConfigurationWizardComponent},
+  { path: 'test', component: TestComponent},
   { path: '**', component:  ConfigurationWizardComponent }
 ];
 
