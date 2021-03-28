@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AirFlowRate, AirFlowRateDescriptions } from 'src/app/enums/air-flow-rate.enum';
+import { AirFlowUnit, AirFlowUnitDescriptions } from 'src/app/enums/air-flow-unit.enum';
 
 @Component({
   selector: 'app-fan-configuration',
@@ -9,11 +9,11 @@ import { AirFlowRate, AirFlowRateDescriptions } from 'src/app/enums/air-flow-rat
 })
 export class FanConfigurationComponent implements OnInit {
   fanConfigurationForm = new FormGroup({
-    flowRateInput: new FormControl(AirFlowRate.CFM, [Validators.required, Validators.min(1), Validators.max(100)]),
+    flowRateInput: new FormControl(AirFlowUnit.CFM, [Validators.required, Validators.min(1), Validators.max(100)]),
     //systemTypeSelect: new FormControl(SystemType.Greenhouse),
   });
 
-  airFlowRates: { name: string, value: AirFlowRate }[] = [];
+  airFlowRates: { name: string, value: AirFlowUnit }[] = [];
 
   constructor() { }
 
@@ -23,10 +23,10 @@ export class FanConfigurationComponent implements OnInit {
 
   populateAirflowRates() {
     this.airFlowRates = [];
-    Object.keys(AirFlowRate).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+    Object.keys(AirFlowUnit).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
       this.airFlowRates.push(
         { 
-          name: AirFlowRateDescriptions.get(+value) ?? '',
+          name: AirFlowUnitDescriptions.get(+value) ?? '',
           value: +value
         });
     });

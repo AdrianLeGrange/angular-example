@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SystemType, SystemTypeDescription } from 'src/app/enums/system-type.enum';
-import { SystemConfiguration } from 'src/app/models/system-configuration.model';
+import { LightSource, LightSourceDescriptions } from 'src/app/enums/light-source.enum';
+import { MainsVoltage, MainsVoltageDescriptions } from 'src/app/enums/mains-voltage.enum';
+import { HydroEnvironment, HydroEnvironmentDescriptions } from 'src/app/enums/hydro-environment.enum';
+import { HydroSystem, HydroSystemDescriptions } from 'src/app/enums/hydro-system.enum';
+import { LengthUnit, LengthUnitDescriptions } from 'src/app/enums/length-unit.enum';
 
 @Component({
   selector: 'app-system-configuration',
@@ -9,34 +12,95 @@ import { SystemConfiguration } from 'src/app/models/system-configuration.model';
   styleUrls: ['./system-configuration.component.css']
 })
 export class SystemConfigurationComponent implements OnInit {
-  systemTypes: { name: string, value: SystemType }[] = [];
+  lightSources: { name: string, value: LightSource }[] = [];
+  mainsVoltages: { name: string, value: MainsVoltage }[] = [];
+  hydroEnvironments: { name: string, value: HydroEnvironment }[] = [];
+  hydroSystems: { name: string, value: HydroSystem }[] = [];
+  lengthUnits:{ name: string, value: LengthUnit }[] = [];
 
   systemConfigurationForm = new FormGroup({
     nameInput: new FormControl('', [Validators.required]),
-    systemTypeSelect: new FormControl(SystemType.Greenhouse),
+    lightSourceSelect: new FormControl('', [Validators.required]),
+    mainsVoltageSelect: new FormControl('', [Validators.required]),
+    hydroEnvironmentSelect: new FormControl('', [Validators.required]),
+    hydroSystemSelect: new FormControl('', [Validators.required]),
+    lengthUnitSelect: new FormControl('', [Validators.required]),
+    growingAreaLengthX: new FormControl('', [Validators.required]),
+    growingAreaLengthY: new FormControl('', [Validators.required]),
+    growingAreaLengthZ: new FormControl('', [Validators.required]),
+    growAreaUnitSelect: new FormControl('', [Validators.required]),
+
   });
 
   constructor() { }
 
   ngOnInit(): void {
-    this.populateSystemTypes();
+    this.populateLightSources();
+    this.populateMainsVoltages();
+    this.populateHydroEnvironments();
+    this.populateHydroSystems();
+    this.populateLengthUnits();
   }
 
-  populateSystemTypes() {
-    this.systemTypes = [];
-    Object.keys(SystemType).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
-      this.systemTypes.push(
+  populateLightSources() {
+    this.lightSources = [];
+    Object.keys(LightSource).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+      this.lightSources.push(
         { 
-          name: SystemTypeDescription.get(+value) ?? '',
+          name: LightSourceDescriptions.get(+value) ?? '',
           value: +value
         });
     });
   }
 
-  save(): SystemConfiguration {
-    return {
-      name: this.systemConfigurationForm.controls.nameInput.value,
-      type: this.systemConfigurationForm.controls.systemTypeSelect.value
-    }
+  populateMainsVoltages() {
+    this.mainsVoltages = [];
+    Object.keys(MainsVoltage).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+      this.mainsVoltages.push(
+        { 
+          name: MainsVoltageDescriptions.get(+value) ?? '',
+          value: +value
+        });
+    });
   }
+
+  populateHydroEnvironments() {
+    this.hydroEnvironments = [];
+    Object.keys(HydroEnvironment).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+      this.hydroEnvironments.push(
+        { 
+          name: HydroEnvironmentDescriptions.get(+value) ?? '',
+          value: +value
+        });
+    });
+  }
+
+  populateHydroSystems() {
+    this.hydroEnvironments = [];
+    Object.keys(HydroSystem).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+      this.hydroSystems.push(
+        { 
+          name: HydroSystemDescriptions.get(+value) ?? '',
+          value: +value
+        });
+    });
+  }
+
+
+  populateLengthUnits() {
+    this.lengthUnits = [];
+    Object.keys(LengthUnit).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+      this.lengthUnits.push(
+        { 
+          name: LengthUnitDescriptions.get(+value) ?? '',
+          value: +value
+        });
+    });
+  }
+
+
+
+
+
+ 
 }

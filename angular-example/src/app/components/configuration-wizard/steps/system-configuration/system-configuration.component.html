@@ -1,27 +1,112 @@
-<form [formGroup]="systemConfigurationForm">
+<form [formGroup]="systemConfigurationForm" fxLayout="column" >
     <h2>System Configuration</h2>
-    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="15px"> 
+
+  <div fxLayout="row" fxLayoutGap="0px">
     <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="nameInput" required>
-        <mat-error *ngIf="systemConfigurationForm.controls.nameInput.errors?.required">
-            System Name must be at least 5 characters
-        </mat-error>
-    </mat-form-field>
-    
-    <mat-form-field>
-        <mat-label>Type</mat-label>
-        <mat-select formControlName="systemTypeSelect">
-          <mat-option *ngFor="let type of systemTypes" [value]="type.value">
-            {{ type.name }}
-          </mat-option>
-        </mat-select>
+      <mat-label>System Name</mat-label>
+      <input matInput formControlName="nameInput" required>
+      <mat-error *ngIf="systemConfigurationForm.controls.nameInput.errors?.required">
+          System Name must be at least 5 characters
+      </mat-error>
       </mat-form-field>
+      <mat-icon matTooltip="Hold icon on phone until tip apper. tip disapear 1500ms after icon released">information</mat-icon>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="0px">
+      <mat-form-field class="form-field" appearance="outline" >
+        <mat-label >Mains Voltage</mat-label>
+        <mat-select  formControlName="mainsVoltageSelect" required>
+          <mat-option *ngFor="let mainsVoltage of mainsVoltages" [value]="mainsVoltage.value"> {{mainsVoltage.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="systemConfigurationForm.controls.mainsVoltageSelect.errors?.required">
+            Mains Voltage is required
+        </mat-error>
+      </mat-form-field>
+      <mat-icon matTooltip="Mains supply voltage to the unit">information</mat-icon>
+    </div>
+
+    <div fxLayout="row"  fxLayoutGap="0px">  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Hydrophonic Environment</mat-label>
+        <mat-select formControlName="hydroEnvironmentSelect" required>
+          <mat-option *ngFor="let hydroEnvironment of hydroEnvironments" [value]="hydroEnvironment.value"> {{hydroEnvironment.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="systemConfigurationForm.controls.hydroEnvironmentSelect.errors?.required">
+          Hydrophonic Environment is required
+        </mat-error>
+      </mat-form-field>
+      <mat-icon matTooltip="Type of grow environment to be used">information</mat-icon>
       </div>
+
+    <div fxLayout="row"  fxLayoutGap="0px">  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Light Source</mat-label>
+        <mat-select formControlName="lightSourceSelect" required>
+          <mat-option *ngFor="let lightSource of lightSources" [value]="lightSource.value"> {{ lightSource.name }} </mat-option>
+        </mat-select>
+        <mat-error *ngIf="systemConfigurationForm.controls.lightSourceSelect.errors?.required">
+          Light Source is required
+        </mat-error>
+      </mat-form-field>
+      <mat-icon matTooltip="Type of light source used for growing plants">information</mat-icon>
+    </div>
+
+    <div fxLayout="row"  fxLayoutGap="0px">  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Hydrophonics System</mat-label>
+        <mat-select formControlName="hydroSystemSelect" required>
+          <mat-option *ngFor="let hydroSystem of hydroSystems" [value]="hydroSystem.value"> {{ hydroSystem.name }} </mat-option>
+        </mat-select>
+        <mat-error *ngIf="systemConfigurationForm.controls.hydroSystemSelect.errors?.required">
+          Light Source is required
+        </mat-error>
+      </mat-form-field>
+      <mat-icon matTooltip="Type of watering system used">information</mat-icon>
+    </div>
+
+    <mat-label>Growing Area</mat-label>
+    <div fxLayout="row"  fxLayoutGap="0px">  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Unit</mat-label>
+        <mat-select formControlName="growAreaUnitSelect" required>
+          <mat-option *ngFor="let lengthUnit of lengthUnits" [value]="lengthUnit.value"> {{ lengthUnit.name }} </mat-option>
+      </mat-select>
+      <mat-error *ngIf="systemConfigurationForm.controls.growAreaUnitSelect.errors?.required">
+        Grow Area Unit is required
+      </mat-error>
+      </mat-form-field>
+      <mat-icon matTooltip="Dimention of growing area">information</mat-icon>
+    </div>
+
+    <div fxLayout="row"  fxLayoutGap="0px">  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Length</mat-label>
+        <input  app-numbers-only matInput formControlName="growingAreaLengthX" required>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row"  fxLayoutGap="0px">       
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Width</mat-label>
+        <input  app-numbers-only matInput formControlName="growingAreaLengthY" required>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row"  fxLayoutGap="0px">  
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Height</mat-label>
+            <input  app-numbers-only matInput formControlName="growingAreaLengthZ" required>
+         </mat-form-field>
+      
+
+      
+    </div>
+
+
+
 </form>
-<button (click)="save()">DEBUG</button>
+<!-- <button (click)="save()">DEBUG</button> 
 <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px"> 
 <button mat-button color=primary (click) = "save()" >mat-button</button>
 <button mat-raised-button (click) = "save()" >mat-raised-button</button>
 <button mat-stroked-button  (click) = "save()" >mat-stroked-button</button>
 </div>
+-->
