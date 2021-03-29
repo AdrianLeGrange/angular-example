@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class TestService {
   getRequest(url: string)
   { 
     let myHeaders = new HttpHeaders();
-  myHeaders = myHeaders.set('Access-Control-Allow-Origin', '*');
-  //myHeaders = myHeaders.append('Access-Control-Allow-Origin', '*'); 
+    myHeaders = myHeaders.delete('Content-Type');
+    myHeaders = myHeaders.set('Accept', 'text/plain');
+
 console.log(myHeaders);
-    return this.http.get<HttpResponse<any>>(url, {observe: 'response',  'headers': myHeaders});
-  //return this.http.get<HttpResponse<any>>(url, {observe: 'response',  headers: {'Access-Control-Allow-Origin':'*'}});
+      return this.http.get<HttpResponse<any>>(url, {observe: 'response',  'headers': myHeaders});
   }
 
   postRequest(url: string, body: any)
