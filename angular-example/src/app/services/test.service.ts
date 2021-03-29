@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,8 +9,13 @@ export class TestService {
   constructor(private http: HttpClient) { }
 
   getRequest(url: string)
-  {
-    return this.http.get<HttpResponse<any>>(url, {observe: 'response'});
+  { 
+    let myHeaders = new HttpHeaders();
+  myHeaders = myHeaders.set('Access-Control-Allow-Origin', '*');
+  //myHeaders = myHeaders.append('Access-Control-Allow-Origin', '*'); 
+console.log(myHeaders);
+    return this.http.get<HttpResponse<any>>(url, {observe: 'response',  'headers': myHeaders});
+  //return this.http.get<HttpResponse<any>>(url, {observe: 'response',  headers: {'Access-Control-Allow-Origin':'*'}});
   }
 
   postRequest(url: string, body: any)
