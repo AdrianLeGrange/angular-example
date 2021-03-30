@@ -90,7 +90,7 @@ export class TestComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       console.debug('Error', error.message);
       this.testForm.controls.responseCodeInput.setValue(error.status);
-      this.testForm.controls.responseBodyOutput.setValue('');
+      this.testForm.controls.responseBodyOutput.setValue(JSON.stringify(''));
     }).add(() => {
       this.isProcessing = false;
     });

@@ -12,8 +12,8 @@ export class TestService {
   getRequest(url: string)
   { 
     let myHeaders = new HttpHeaders();
-    myHeaders = myHeaders.delete('Content-Type');
-    myHeaders = myHeaders.set('Accept', 'text/plain');
+   // myHeaders = myHeaders.delete('Content-Type');
+   // myHeaders = myHeaders.set('Accept', 'text/plain');
 
 console.log(myHeaders);
       return this.http.get<HttpResponse<any>>(url, {observe: 'response',  'headers': myHeaders});
