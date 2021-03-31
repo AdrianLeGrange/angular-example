@@ -6,8 +6,8 @@
 | -------- |:-------------:| :--------------- |:--------------------|:----------------------------------------------------------------|
 | GET      | /modules      |                  |                     | Returns a list of module descriptions (id, types)               |
 | GET      | /modules      | ?id=2            |                     | Returns a specific module object                                |
-| POST     | /modules      |                  | Body where id:-1    | INSERT Request body contain new object with id:-1<br>Response body contain created object|
-| POST     | /modules      |                  | Body where id: 2    | UPDATE Request body contain updated object with id: 2<br>Response body contain updated object|
+| POST     | /modules      |                  | Body where id:-1    | INSERT Request body contain new object with id:-1 <br>Response body contain result of post (error description)|
+| POST     | /modules      |                  | Body where id: 2    | UPDATE Request body contain updated object with id: 2<br>Response body contain result of post (error description)|
 | DELETE   | /modules      | ?id=2            |                     | Delete  specified module (id:2)                                 |
 
 <br>
@@ -34,6 +34,15 @@
     ......
 } 
 ```
+
+POST Response Body:
+```JSON
+
+{
+    "result":0
+} 
+```
+
 
 ***
 
