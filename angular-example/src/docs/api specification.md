@@ -4,13 +4,14 @@
 
 | Method   | Endpoint      | Query Parameters | Body                | Description                                                     |
 | -------- |:-------------:| :--------------- |:--------------------|:----------------------------------------------------------------|
-| GET      | /modules      |                  |                     | Returns a list of module descriptions                           |
-| GET      | /modules      | ?id=2            |                     | Returns a specific module                                       |
-| POST     | /modules      |                  | Body where id:-1    | Adds a module specification in body to INSET new module (id:-1) |
-| POST     | /modules      |                  | Body where id: 2    | Adds a module specification in body to UPDATE module (id:2)     |
+| GET      | /modules      |                  |                     | Returns a list of module descriptions (id, types)               |
+| GET      | /modules      | ?id=2            |                     | Returns a specific module object                                |
+| POST     | /modules      |                  | Body where id:-1    | INSERT Request body contain new object with id:-1<br>Response body contain created object|
+| POST     | /modules      |                  | Body where id: 2    | UPDATE Request body contain updated object with id: 2<br>Response body contain updated object|
 | DELETE   | /modules      | ?id=2            |                     | Delete  specified module (id:2)                                 |
 
 <br>
+
 
 "INSET" Body:
 ```JSON 
