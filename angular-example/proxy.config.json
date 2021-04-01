@@ -1,6 +1,6 @@
 {
-    "/api": {
-    "target": "http://192.168.0.105:80",
+    "/modules": {
+    "target": "http://192.168.1.101:80",
     "secure": false,
     "changeOrigin": true
 

@@ -5,8 +5,10 @@
 <br>
 
 ```
-CURL    -v          Verbose  display everything request and response.
-        --header    Add to header
+CURL    -v              Verbose  display everything request and response.
+        --header        Add to header
+        -X POST         Do post
+        -d "{\"id\":1}" Data to be send in body
 ```
 
 -Get from IP \
@@ -73,4 +75,34 @@ $ curl -v --header 'Access-Control-Allow-Origin: *' http://192.168.1.101/api?th_
 { [202 bytes data]
 100   202  100   202    0     0   1052      0 --:--:-- --:--:-- --:--:--  1052th_module={"th":[{"name":"th1","used":"TRUE","modes":["heating", "cooling"],},{"name":"th2","used":"FALSE","modes":["cooling", "heating"],},{"name":"th3","used":"TRUE","modes":["heating", "cooling"],}]}
 * Closing connection 0
-'''
+```
+
+<br>
+
+-Post with data in body\
+curl -v -X POST -d "{\"id\":1}" http://192.168.1.101/modules
+```
+C:\Users\baket>curl -v -X POST -d "{\"id\":1}" http://192.168.1.101/modules
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 192.168.1.101...
+* TCP_NODELAY set
+* Connected to 192.168.1.101 (192.168.1.101) port 80 (#0)
+> POST /modules HTTP/1.1
+> Host: 192.168.1.101
+> User-Agent: curl/7.55.1
+> Accept: */*
+> Content-Length: 8
+> Content-Type: application/x-www-form-urlencoded
+>
+* upload completely sent off: 8 out of 8 bytes
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Server: WebServer V1.0
+< Content-Type: application/json
+< Access-Control-Allow-Origin: *
+< Content-Length: 17
+<
+* transfer closed with 17 bytes remaining to read
+* Closing connection 0
+curl: (18) transfer closed with 17 bytes remaining to read
+```
