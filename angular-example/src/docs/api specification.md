@@ -1,14 +1,15 @@
 # API Specification
+NOTE: Simlelink C32xx DON't support a body in the response for put & post  	See. SWRU455M pg.185 9.7.3 "POST" and 9.7.3 "PUT"
 
-## "/modules" endpoint
+## "/modules" endpoint  (post/put (cc32xx don's support a body in response))
 
-| Method   | Endpoint      | Query Parameters | Body                | Description                                                     |
-| -------- |:-------------:| :--------------- |:--------------------|:----------------------------------------------------------------|
-| GET      | /modules      |                  |                     | Returns a list of module descriptions (id, types)               |
-| GET      | /modules      | ?id=2            |                     | Returns a specific module object                                |
-| POST     | /modules      |                  | Body where id:-1    | INSERT Request body contain new object with id:-1 <br>Response body contain result of post (error description)|
-| POST     | /modules      |                  | Body where id: 2    | UPDATE Request body contain updated object with id: 2<br>Response body contain result of post (error description)|
-| DELETE   | /modules      | ?id=2            |                     | Delete  specified module (id:2)                                 |
+| Method | Endpoint | Query Params | Body (request)        | Body (responce)      | Responce | Description                                            |
+| -------|:--------:| :----------- |:----------------------|:---------------------|:---------|--------------------------------------------------------|
+| GET    | /modules | -            | -                     | Module list          | 200/     | Returns a list of module descriptions (id, types)      |
+| GET    | /modules | ?id=2        | -                     | Module specification | 200/     | Returns a specific module object                       |
+| POST   | /modules | -            | Object{id:-1, type:2} | - (Not supported)    | 200/     | INSERT Request body contain new object with id:-1 <br>Response body contain result of post (error description)|
+| POST   | /modules | -            | Object{id:2,.......}  | - (Not supported)    | 200/     | UPDATE Request body contain updated object with id: 2<br>Response body contain result of post (error description)|
+| DELETE | /modules | ?id=2        | -                     | -                    | 200/     | Delete  specified module (id:2)                        |
 
 <br>
 
@@ -35,13 +36,6 @@
 } 
 ```
 
-POST Response Body:
-```JSON
-
-{
-    "result":0
-} 
-```
 
 
 ***
