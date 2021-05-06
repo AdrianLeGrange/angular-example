@@ -9,6 +9,7 @@ import { TestService } from 'src/app/services/test.service';
 // Other
 import { Constants } from 'src/app/constants/constants';
 import { HttpMethod, HttpMethodDescriptions } from 'src/app/enums/http-method.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-test',
@@ -46,7 +47,7 @@ export class TestComponent implements OnInit {
   }
 
   onSendRequest() {
-    const endpointURL = Constants.BaseURL + this.testForm.controls.endpointInput.value;
+    const endpointURL = environment.apiUrl + this.testForm.controls.endpointInput.value;
 
     let response$: Observable<HttpResponse<any>>;
 

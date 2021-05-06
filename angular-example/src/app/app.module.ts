@@ -50,6 +50,7 @@ import { FlexModule } from '@angular/flex-layout';
 import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
 import { TestComponent } from './components/test/test.component';
 import { HttpClientModule} from '@angular/common/http';
+import { HardwareDashboardComponent } from './components/hardware-dashboard/hardware-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { HttpClientModule} from '@angular/common/http';
     FanConfigurationComponent,
     TestCompComponent,
     NumbersOnlyDirective,
-    TestComponent
+    TestComponent,
+    HardwareDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>My Hardware</mat-card-title>
+    </mat-card-header>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let hardwareModule"> {{hardwareModule.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Hardware Type </th>
+            <td mat-cell *matCellDef="let hardwareModule"> {{hardwareModule.type}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="port">
+            <th mat-header-cell *matHeaderCellDef> Port </th>
+            <td mat-cell *matCellDef="let hardwareModule"> {{hardwareModule.port}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>      
+</mat-card>   

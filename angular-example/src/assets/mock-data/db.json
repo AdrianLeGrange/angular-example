@@ -1,0 +1,14 @@
+{
+    "hardware": [
+        {
+            "description": "Enviromental Sensor",
+            "type": 1,
+            "port": 1
+        },
+        {
+            "description": "Enviromental Sensor CO2",
+            "type": 2,
+            "port": 2
+        }
+    ]
+}

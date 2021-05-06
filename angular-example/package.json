@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "server": "json-server --watch ./src/assets/mock-data/db.json"
   },
   "private": true,
   "dependencies": {
