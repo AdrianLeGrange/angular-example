@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>My Hardware</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field class="form-field" appearance="outline" >
+        <mat-label >Mains Voltage</mat-label>
+        <mat-select  formControlName="Hardware Type" required>
+          <mat-option *ngFor="let environmentSensorTypeDescriptions of environmentSensorType" [value]="environmentSensorTypeDescriptions.value"> {{environmentSensorTypeDescriptions.name}}</mat-option>
+        </mat-select>
+        
+      </mat-form-field>
+
+    </mat-card>

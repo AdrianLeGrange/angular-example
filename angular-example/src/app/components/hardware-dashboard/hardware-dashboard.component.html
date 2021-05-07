@@ -23,4 +23,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>      
+
+
+    <button mat-fill-button  color="primary" (click)="onAddRequest()">Add</button>
+
 </mat-card>   
+
+
+

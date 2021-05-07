@@ -25,3 +25,5 @@ export class HardwareService {
     return this.http.post<boolean>(Endpoints.Hardware.addHardware, module);
   }
 }
+
+

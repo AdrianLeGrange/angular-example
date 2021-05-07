@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { ConfigurationWizardComponent } from './components/configuration-wizard/configuration-wizard.component';
 import { HardwareDashboardComponent } from './components/hardware-dashboard/hardware-dashboard.component';
+import { HardwareAddComponent } from './components/hardware-add/hardware-add.component';
 import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: 'configuration-wizard', component: ConfigurationWizardComponent},
   { path: 'test', component: TestComponent},
   { path: 'hardware-dashboard', component: HardwareDashboardComponent},
+  { path: 'hardware-add', component: HardwareAddComponent},
   { path: '**', component:  ConfigurationWizardComponent },
 ];
 

@@ -3,21 +3,20 @@ NOTE: Simlelink C32xx DON't support a body in the response for put & post  	See.
 
 ## "/modules" endpoint  (post/put (cc32xx don's support a body in response))
 
-| Method | Endpoint | Query Params | Body (request)        | Body (responce)      | Responce | Description                                            |
-| -------|:--------:| :----------- |:----------------------|:---------------------|:---------|--------------------------------------------------------|
-| GET    | /modules | -            | -                     | Module list          | 200/     | Returns a list of module descriptions (id, types)      |
-| GET    | /modules | ?id=2        | -                     | Module specification | 200/     | Returns a specific module object                       |
-| POST   | /modules | -            | Object{id:-1, type:2} | - (Not supported)    | 200/     | INSERT Request body contain new object with id:-1 <br>Response body contain result of post (error description)|
-| POST   | /modules | -            | Object{id:2,.......}  | - (Not supported)    | 200/     | UPDATE Request body contain updated object with id: 2<br>Response body contain result of post (error description)|
-| DELETE | /modules | ?id=2        | -                     | -                    | 200/     | Delete  specified module (id:2)                        |
+| Method | Endpoint | Query Params | Body (request)                                  | Body (responce)      | Responce | Description                                            |
+| -------|:--------:| :----------- |:------------------------------------------------|:---------------------|:---------|--------------------------------------------------------|
+| GET    | /modules | -            | -                                               | Module list          | 200/     | Returns a list of module descriptions (id, types)      |
+| GET    | /modules | ?id=2        | -                                               | Module specification | 200/     | Returns a specific module object                       |
+| POST   | /modules | -            | Object{action:0, type:2}                        | - (Not supported)    | 200/     | INSERT - Request body contain new object with action & type|
+| POST   | /modules | -            | Object{action:1, id:2, name:fan, speed:50, ...} | - (Not supported)    | 200/     | UPDATE - Request body contain updated object with action, id and parameters|
+| POST   | /modules | -            | Object{action:2, id:2}                          | - (Not supported)    | 200/     | Delete-  Request body contain object with action & id  |
 
 <br>
-
 
 "INSET" Body:
 ```JSON 
 {
-    "id":-1,
+    "action":0,
     "name":"new module",
     "description":"My garden temperature",
     "type":0,
@@ -28,26 +27,34 @@ NOTE: Simlelink C32xx DON't support a body in the response for put & post  	See.
 ```JSON
 
 {
+    "action":1,
     "id":2,
     "name":"Temperature model",
     "description":"My garden temperature",
-    "type":0,
     ......
 } 
 ```
+"DELETE" Body:
+```JSON
 
+{
+    "action":2,
+    "id":2,
+} 
+```
 
 
 ***
 
 ## "/rules" endpoint
-| Method   | Endpoint      | Query Parameters | Body                | Description                                                     |
+Every rule can have up to xx modules (eg. thermostat -> condition); 
+| Method   | Endpoint      | Query Parameters | Body request        | Description                                                     |
 | -------- |:-------------:| :--------------- |:--------------------|:----------------------------------------------------------------|
 | GET      | /rules        |                  |                     | Returns a list of rule descriptions                             |
 | GET      | /rules        | ?id=2            |                     | Returns a specific rule                                         |
-| POST     | /rules        |                  | Body where id:-1    | Adds a rule specification in body to INSET new rule (id:-1)     |
-| POST     | /rules        |                  | Body where id: 2    | Adds a rule specification in body to UPDATE rule (id:2)         |
-| DELETE   | /rules        | ?id=2            |                     | Delete specified rule (id:2)                                    |
+| POST     | /rules        |                  | {action:0, rule:0)  | INSERT a rule specification in body to INSET new rule           |
+| POST     | /rules        |                  | Body where id: 2    | UPDATE a rule specification in body to UPDATE rule (id:2)       |
+| POST     | /rules        |                  | Body action:2, id:2 | DELETE a rule specified (id:2)                                  |
 
 ***
 ## "/status" endpoint

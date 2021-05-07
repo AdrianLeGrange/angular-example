@@ -51,6 +51,7 @@ import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
 import { TestComponent } from './components/test/test.component';
 import { HttpClientModule} from '@angular/common/http';
 import { HardwareDashboardComponent } from './components/hardware-dashboard/hardware-dashboard.component';
+import { HardwareAddComponent } from './components/hardware-add/hardware-add.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { HardwareDashboardComponent } from './components/hardware-dashboard/hard
     TestCompComponent,
     NumbersOnlyDirective,
     TestComponent,
-    HardwareDashboardComponent
+    HardwareDashboardComponent,
+    HardwareAddComponent,
   ],
   imports: [
     BrowserModule,

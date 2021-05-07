@@ -9,6 +9,11 @@
             "description": "Enviromental Sensor CO2",
             "type": 2,
             "port": 2
+        },
+        {
+            "description": "Enviromental Sensor",
+            "type": 1,
+            "port": 3
         }
     ]
 }

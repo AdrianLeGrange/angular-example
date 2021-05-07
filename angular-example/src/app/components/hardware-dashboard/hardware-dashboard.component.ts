@@ -6,11 +6,12 @@ import { HardwareService } from 'src/app/services/hardware.service';
 
 // Models
 import { HardwareModule } from 'src/app/models/hardware-module.model';
+import { HardwareAddComponent } from '../hardware-add/hardware-add.component';
 
 @Component({
   selector: 'app-hardware-dashboard',
   templateUrl: './hardware-dashboard.component.html',
-  styleUrls: ['./hardware-dashboard.component.css']
+  styleUrls: ['./hardware-dashboard.component.css'] 
 })
 export class HardwareDashboardComponent implements OnInit {
   displayedColumns: string[] = ['description', 'type', 'port'];
@@ -29,4 +30,20 @@ export class HardwareDashboardComponent implements OnInit {
       this.dataSource = new MatTableDataSource<HardwareModule>(hardware);
     });
   }
+
+
+  onAddRequest() {
+    console.log("User clicked \"Add\" button!");
+    HardwareAddComponent;
+    
+    
+  }
+
+
 }
+
+
+
+
+
+
