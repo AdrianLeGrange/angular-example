@@ -13,6 +13,7 @@ import { HardwareAddComponent } from '../hardware-add/hardware-add.component';
   templateUrl: './hardware-dashboard.component.html',
   styleUrls: ['./hardware-dashboard.component.css'] 
 })
+
 export class HardwareDashboardComponent implements OnInit {
   displayedColumns: string[] = ['description', 'type', 'port'];
   dataSource = new MatTableDataSource<HardwareModule>([]);
@@ -31,14 +32,10 @@ export class HardwareDashboardComponent implements OnInit {
     });
   }
 
-
   onAddRequest() {
     console.log("User clicked \"Add\" button!");
     HardwareAddComponent;
-    
-    
   }
-
 
 }
 
