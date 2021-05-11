@@ -29,7 +29,6 @@ export class HardwareAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateEnvironmentSensorTypes();
-    this.
         }
 
   populateEnvironmentSensorTypes() {
