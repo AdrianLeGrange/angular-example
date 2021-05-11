@@ -5,7 +5,7 @@
 
     <mat-form-field class="form-field" appearance="outline" >
         <mat-label >Environment Sensor</mat-label>
-        <mat-select  formControlName="Hardware Type" required>
+        <mat-select  formControlName="HardwareType" required>
           <mat-option *ngFor="let environmentSensorType of environmentSensorTypes" [value]="environmentSensorType.value"> {{environmentSensorType.name}}</mat-option>
         </mat-select>
         

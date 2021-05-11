@@ -1,7 +1,9 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { componentFactoryName } from '@angular/compiler';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatFormFieldControl } from '@angular/material/form-field';
 
 
 import { EnvironmentSensorType, EnvironmentSensorTypeDescriptions } from 'src/app/enums/environment-sensor-type.enum';
@@ -27,7 +29,8 @@ export class HardwareAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateEnvironmentSensorTypes();
-  }
+    this.
+        }
 
   populateEnvironmentSensorTypes() {
     this.environmentSensorTypes = [];
@@ -37,6 +40,7 @@ export class HardwareAddComponent implements OnInit {
           name: EnvironmentSensorTypeDescriptions.get(+value) ?? '',
           value: +value
         });
+        
     });
   }
 }

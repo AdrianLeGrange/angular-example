@@ -8,31 +8,32 @@ import { HardwareService } from 'src/app/services/hardware.service';
 import { HardwareModule } from 'src/app/models/hardware-module.model';
 import { HardwareAddComponent } from '../hardware-add/hardware-add.component';
 
-@Component({
-  selector: 'app-hardware-dashboard',
-  templateUrl: './hardware-dashboard.component.html',
-  styleUrls: ['./hardware-dashboard.component.css'] 
+@Component({                                                    //Decorator marks class as Angular component
+  selector: 'app-hardware-dashboard',                           //The CSS selector that identifies this directive in a template and triggers instantiation of the directive.
+  templateUrl: './hardware-dashboard.component.html',           //The relative path or absolute URL of a template file for an Angular component. If provided, do not supply an inline template using template.
+  styleUrls: ['./hardware-dashboard.component.css']             //One or more inline CSS stylesheets to use in this component.
 })
 
 export class HardwareDashboardComponent implements OnInit {
   displayedColumns: string[] = ['description', 'type', 'port'];
-  dataSource = new MatTableDataSource<HardwareModule>([]);
+  dataSource = new MatTableDataSource<HardwareModule>([]);      //Create a variable "dataSource" array of type MatTableDataSource. Used in html
 
-  constructor(private hardwareService: HardwareService) { }
+  constructor(private hardwareService: HardwareService) { }     //Create instance of "HardwareService"
 
-  ngOnInit(): void
+  ngOnInit(): void                                              //Execute when page is loaded
   {
-    this.loadHardware();
+    this.loadHardware();                                        //Load required data from server
   }
 
-  loadHardware()
+  loadHardware()                                                //Function to get hardware data from server
   {
-    this.hardwareService.getHardware().subscribe((hardware: HardwareModule[]) => {
-      this.dataSource = new MatTableDataSource<HardwareModule>(hardware);
+    this.hardwareService.getHardware().subscribe((hardware: HardwareModule[]) => {   //Subscribe to getHardware - subscribe returns a "HardwareModule" data => inline function
+      this.dataSource = new MatTableDataSource<HardwareModule>(hardware);            //Inline function copy data into this.dataSource (variable for table data)
     });
   }
 
-  onAddRequest() {
+
+  onAddRequest() {                                            //"Add" button event handler
     console.log("User clicked \"Add\" button!");
     HardwareAddComponent;
   }
