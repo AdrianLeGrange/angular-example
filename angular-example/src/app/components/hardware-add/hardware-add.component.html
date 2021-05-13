@@ -5,10 +5,17 @@
 
     <mat-form-field class="form-field" appearance="outline" >
         <mat-label >Environment Sensor</mat-label>
-        <mat-select  formControlName="HardwareType" required>
+        <mat-select  id="matselect"  formControlName="HardwareType" required (selectionChange)="typeSelected()">
           <mat-option *ngFor="let environmentSensorType of environmentSensorTypes" [value]="environmentSensorType.value"> {{environmentSensorType.name}}</mat-option>
         </mat-select>
-        
       </mat-form-field>
 
+     <div *ngIf="showMe">
+        <mat-form-field class="form-field1" appearance="outline" >
+        <mat-label >Port</mat-label>
+        <mat-select [(value)] ="selected2" formControlName="HardwarePort" required  >
+          <mat-option *ngFor="let environmentSensorPort of environmentSensorPorts" [value]="environmentSensorPort.value"> {{environmentSensorPort.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     </mat-card>
