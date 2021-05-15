@@ -43,6 +43,20 @@ NOTE: Simlelink C32xx DON't support a body in the response for put & post  	See.
 } 
 ```
 
+***
+
+## "/plugins" endpoint
+Every port can have 1 plugin (eg. port:1, type:2(th/rh plugin) ); 
+Can scan the system to detect the actual plugin's present on every port available.
+| Method   | Endpoint      | Query Parameters | Body request                       | Body (responce)         | Responce | Description                                                     |
+| -------- |:-------------:| :--------------- |:-----------------------------------|:------------------------|:---------|-----------------------------------------------------------------|
+| GET      | /plugins      |                  |                                    | list{port:1,plugin:2}   | 200/     | Returns a list of configured "plugin" devices (Saved list)      |
+| GET      | /plugins      | ?new             |                                    | list{port:1,plugin:2}   | 200/     | Returns a list of detected "plugin" devices, used when re/configuring unit) |
+| GET      | /plugins      | ?port=2          |                                    | {port:1,plugin:2}       | 200/     | Returns "port:2" and it's connected "plugin" type               |
+| POST     | /plugins      |                  | {action:0, port:0, type:1}         | - (Not supported)       | 200/     | INSERT a plugin device "type:1" on "port:0                      |
+| POST     | /plugins      |                  | {action:1, port:1, type:2}         | - (Not supported)       | 200/     | UPDATE a plugin device on a specific port                       |
+| POST     | /plugins      |                  | {action:2, port:1, type:3}         | - (Not supported)       | 200/     | DELETE a plugin device on a specific port(port:2)               |
+
 
 ***
 

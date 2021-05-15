@@ -1,18 +1,23 @@
 {
     "hardware": [
         {
-            "description": "Enviromental Sensor",
+            "description": "Plugin Sensor",
             "type": 1,
             "port": 1
         },
         {
-            "description": "Enviromental Sensor CO2",
+            "description": "Plugin CO2",
             "type": 2,
             "port": 2
         },
         {
-            "description": "Enviromental Sensor",
+            "description": "Plugin Sensor",
             "type": 1,
+            "port": 3
+        },
+        {
+            "description": "Plugin Extenter",
+            "type": 3,
             "port": 3
         }
     ],
