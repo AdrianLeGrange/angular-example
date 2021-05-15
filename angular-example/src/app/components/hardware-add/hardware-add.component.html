@@ -1,21 +1,23 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Add Hardware</mat-card-title>
-    </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>Add Hardware</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Environment Sensor</mat-label>
+      <mat-select id="matselect" formControlName="HardwareType" required (selectionChange)="typeSelected()">
+        <mat-option *ngFor="let environmentSensorType of environmentSensorTypes" [value]="environmentSensorType.value">
+          {{environmentSensorType.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <mat-form-field class="form-field" appearance="outline" >
-        <mat-label >Environment Sensor</mat-label>
-        <mat-select  id="matselect"  formControlName="HardwareType" required (selectionChange)="typeSelected()">
-          <mat-option *ngFor="let environmentSensorType of environmentSensorTypes" [value]="environmentSensorType.value"> {{environmentSensorType.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
 
-     <div *ngIf="showMe">
-        <mat-form-field class="form-field1" appearance="outline" >
-        <mat-label >Port</mat-label>
-        <mat-select [(value)] ="selected2" formControlName="HardwarePort" required  >
-          <mat-option *ngFor="let environmentSensorPort of environmentSensorPorts" [value]="environmentSensorPort.value"> {{environmentSensorPort.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    </mat-card>
+    <mat-form-field class="form-field1" appearance="outline">
+      <mat-label>Port</mat-label>
+      <mat-select formControlName="HardwarePort" required>
+        <mat-option *ngFor="let environmentSensorPort of environmentSensorPorts" [value]="environmentSensorPort.value">
+          {{environmentSensorPort.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-card>

@@ -1,4 +1,5 @@
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
+import { HttpErrorResponse } from '@angular/common/http';
 import { componentFactoryName, identifierModuleUrl } from '@angular/compiler';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
@@ -8,6 +9,7 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 
 
 import { EnvironmentSensorType, EnvironmentSensorTypeDescriptions } from 'src/app/enums/environment-sensor-type.enum';
+import { HardwareService } from 'src/app/services/hardware.service';
 
 
 @Component({
@@ -21,22 +23,21 @@ export class HardwareAddComponent implements OnInit {
 
   environmentSensorTypes: { name: string, value: EnvironmentSensorType }[] = [];
   environmentSensorPorts: { name: string, value: number }[] = [];
-  showMe : boolean = false;
-  selected2 : number = 2;
 
-  systemConfigurationForm = new FormGroup({
+  form = new FormGroup({
     nameInput: new FormControl('', [Validators.required]),
-    EnvironmentSensorTypeSelect: new FormControl('', [Validators.required]),
-    EnvironmentSensorPortSelect: new FormControl('', [Validators.required]),
+    HardwareType: new FormControl(2, [Validators.required]),   
+    HardwarePort: new FormControl('', [Validators.required]),
   });
 
-  constructor() { }
+  constructor(private hardwareService: HardwareService) {
+    console.debug("Initial:",this.form.controls.HardwareType.value);
+   } 
 
   ngOnInit(): void {
     this.populateEnvironmentSensorTypes();
     this.populateEnvironmentSensorPorts();
-    this.showMe = false;
-    this.selected2 = 2;
+    
     
 
   }
@@ -61,10 +62,35 @@ export class HardwareAddComponent implements OnInit {
     
   }
 
+  loadAvailablePorts() {
+    this.hardwareService.getPorts().subscribe((numbers: number[]) => {
+      this.environmentSensorPorts = [];
+      numbers.forEach((number) => {
+        this.environmentSensorPorts.push( {name: "Port " + number, value: number})
+      });
+    },
+    (error: HttpErrorResponse) => {
+      
+    });
+  }
+
   typeSelected(){
     console.log("Type selected");
-this.showMe = !this.showMe;       
+
+this.environmentSensorPorts.push( {name: "portx", value: 4} );
+var ports = this.environmentSensorPorts;
+
+//this.environmentSensorPorts = [];
+
+//this.environmentSensorPorts.concat(ports);
+console.debug("Selection:",this.form.controls.HardwareType.value);
   }
+
+
+getValue(select:{name:string, value:number}){
+  return select.value;
+
+}
 
 
 }

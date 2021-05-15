@@ -24,6 +24,11 @@ export class HardwareService {
   {
     return this.http.post<boolean>(Endpoints.Hardware.addHardware, module); //subscriber function -POST data to server endpoint
   }
+
+  getPorts(): Observable<number[]>
+  { 
+    return this.http.get<number[]>(Endpoints.Hardware.getPorts);
+  }
 }
 
 
