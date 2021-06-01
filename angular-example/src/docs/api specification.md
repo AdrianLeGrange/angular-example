@@ -1,15 +1,15 @@
 # API Specification
-NOTE: Simlelink C32xx DON't support a body in the response for put & post  	See. SWRU455M pg.185 9.7.3 "POST" and 9.7.3 "PUT"
+NOTE: Simplelink C32xx DON't support a body in the response for PUT & POST  	See. SWRU455M pg.185 9.7.3 "POST" and 9.7.3 "PUT"
 
-## "/modules" endpoint  (post/put (cc32xx don's support a body in response))
+## "/modules" endpoint  (post/put (cc32xx dont's support a body in response))
 
 | Method | Endpoint | Query Params | Body (request)                                  | Body (responce)      | Responce | Description                                            |
 | -------|:--------:| :----------- |:------------------------------------------------|:---------------------|:---------|--------------------------------------------------------|
 | GET    | /modules | -            | -                                               | Module list          | 200/     | Returns a list of module descriptions (id, types)      |
 | GET    | /modules | ?id=2        | -                                               | Module specification | 200/     | Returns a specific module object                       |
-| POST   | /modules | -            | Object{action:0, type:2}                        | - (Not supported)    | 200/     | INSERT - Request body contain new object with action & type|
-| POST   | /modules | -            | Object{action:1, id:2, name:fan, speed:50, ...} | - (Not supported)    | 200/     | UPDATE - Request body contain updated object with action, id and parameters|
-| POST   | /modules | -            | Object{action:2, id:2}                          | - (Not supported)    | 200/     | Delete-  Request body contain object with action & id  |
+| POST   | /modules | -            | Object{action:0, type:2}                        | - (Not supported)    | 200/     | Insert - Request body contain new object with action & type|
+| POST   | /modules | -            | Object{action:1, id:2, name:fan, speed:50, ...} | - (Not supported)    | 200/     | Update - Request body contain updated object with action, id and parameters|
+| POST   | /modules | -            | Object{action:2, id:2}                          | - (Not supported)    | 200/     | Delete - Request body contain object with action & id  |
 
 <br>
 
@@ -53,9 +53,9 @@ Can scan the system to detect the actual plugin's present on every port availabl
 | GET      | /plugins      |                  |                                    | list{port:1,plugin:2}   | 200/     | Returns a list of configured "plugin" devices (Saved list)      |
 | GET      | /plugins      | ?new             |                                    | list{port:1,plugin:2}   | 200/     | Returns a list of detected "plugin" devices, used when re/configuring unit) |
 | GET      | /plugins      | ?port=2          |                                    | {port:1,plugin:2}       | 200/     | Returns "port:2" and it's connected "plugin" type               |
-| POST     | /plugins      |                  | {action:0, port:0, type:1}         | - (Not supported)       | 200/     | INSERT a plugin device "type:1" on "port:0                      |
-| POST     | /plugins      |                  | {action:1, port:1, type:2}         | - (Not supported)       | 200/     | UPDATE a plugin device on a specific port                       |
-| POST     | /plugins      |                  | {action:2, port:1, type:3}         | - (Not supported)       | 200/     | DELETE a plugin device on a specific port(port:2)               |
+| POST     | /plugins      |                  | {action:0, port:0, type:1}         | - (Not supported)       | 200/     | Insert a plugin device "type:1" on "port:0                      |
+| POST     | /plugins      |                  | {action:1, port:1, type:2}         | - (Not supported)       | 200/     | Update a plugin device on a specific port                       |
+| POST     | /plugins      |                  | {action:2, port:1, type:3}         | - (Not supported)       | 200/     | Delete a plugin device on a specific port(port:2)               |
 
 
 ***
