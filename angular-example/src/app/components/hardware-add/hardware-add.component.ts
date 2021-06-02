@@ -8,8 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 
 
-import { EnvironmentSensorType, EnvironmentSensorTypeDescriptions } from 'src/app/enums/environment-sensor-type.enum';
-import { HardwareService } from 'src/app/services/hardware.service';
+import { PluginType, PluginTypeDescriptions } from 'src/app/enums/plugin-type.enum';
+import { PluginService } from 'src/app/services/hardware.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ import { HardwareService } from 'src/app/services/hardware.service';
 
 export class HardwareAddComponent implements OnInit {
 
-  environmentSensorTypes: { name: string, value: EnvironmentSensorType }[] = [];
+  environmentSensorTypes: { name: string, value: PluginType }[] = [];
   environmentSensorPorts: { name: string, value: number }[] = [];
 
   form = new FormGroup({
@@ -30,7 +30,7 @@ export class HardwareAddComponent implements OnInit {
     HardwarePort: new FormControl('', [Validators.required]),
   });
 
-  constructor(private hardwareService: HardwareService) {
+  constructor(private pluginService: PluginService) {
     console.debug("Initial:",this.form.controls.HardwareType.value);
    } 
 
@@ -44,10 +44,10 @@ export class HardwareAddComponent implements OnInit {
 
   populateEnvironmentSensorTypes() {
     this.environmentSensorTypes = [];
-    Object.keys(EnvironmentSensorType).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
+    Object.keys(PluginType).filter((key: string | number) => !isNaN(Number(key))).forEach(value => {
       this.environmentSensorTypes.push(
         {
-          name: EnvironmentSensorTypeDescriptions.get(+value) ?? '',
+          name: PluginTypeDescriptions.get(+value) ?? '',
           value: +value
         });
 
@@ -63,7 +63,7 @@ export class HardwareAddComponent implements OnInit {
   }
 
   loadAvailablePorts() {
-    this.hardwareService.getPorts().subscribe((numbers: number[]) => {
+    this.pluginService.getPorts().subscribe((numbers: number[]) => {
       this.environmentSensorPorts = [];
       numbers.forEach((number) => {
         this.environmentSensorPorts.push( {name: "Port " + number, value: number})
