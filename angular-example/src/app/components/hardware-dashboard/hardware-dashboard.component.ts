@@ -16,7 +16,7 @@ import { HardwareAddComponent } from '../hardware-add/hardware-add.component';
 
 export class HardwareDashboardComponent implements OnInit {
   displayedColumns: string[] = ['description', 'type', 'port'];
-  dataSource = new MatTableDataSource<PluginModule>([]);      //Create a variable "dataSource" array of type MatTableDataSource. Used in html
+  dataSource = new MatTableDataSource<Plugin>([]);      //Create a variable "dataSource" array of type MatTableDataSource. Used in html
 
   constructor(private pluginService: PluginService) { }     //Create instance of "HardwareService"
 
@@ -27,8 +27,8 @@ export class HardwareDashboardComponent implements OnInit {
 
   loadHardware()                                                //Function to get hardware data from server
   {
-    this.pluginService.getPlugin().subscribe((hardware: PluginModule[]) => {   //Subscribe to getHardware - subscribe returns a "HardwareModule" data => inline function
-      this.dataSource = new MatTableDataSource<PluginModule>(hardware);            //Inline function copy data into this.dataSource (variable for table data)
+    this.pluginService.getPlugin().subscribe((hardware: Plugin[]) => {   //Subscribe to getHardware - subscribe returns a "HardwareModule" data => inline function
+      this.dataSource = new MatTableDataSource<Plugin>(hardware);            //Inline function copy data into this.dataSource (variable for table data)
     });
   }
 
@@ -37,7 +37,7 @@ export class HardwareDashboardComponent implements OnInit {
     console.log("User clicked \"Add\" button!");
     HardwareAddComponent;
   }
-
+ 
 }
 
 
