@@ -1,3 +1,4 @@
+//Import required external Classes/Functions
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { HttpErrorResponse } from '@angular/common/http';
 import { componentFactoryName, identifierModuleUrl } from '@angular/compiler';
@@ -11,14 +12,15 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import { PluginType, PluginTypeDescriptions } from 'src/app/enums/plugin-type.enum';
 import { PluginService } from 'src/app/services/hardware.service';
 
-
+//Decorator - Provides the component with the View to display & Metadata about the Component. 
+//Must be bofore class definition.
 @Component({
-  selector: 'app-hardware-add',
-  templateUrl: './hardware-add.component.html',
-  styleUrls: ['./hardware-add.component.css']
+  selector: 'app-hardware-add',                 //path  app/hardware-add
+  templateUrl: './hardware-add.component.html', //view - .html file
+  styleUrls: ['./hardware-add.component.css']   //view stylesheet
 })
 
-
+//Class - Create Class, "export" allow other classes to inport this class
 export class HardwareAddComponent implements OnInit {
 
   environmentSensorTypes: { name: string, value: PluginType }[] = [];

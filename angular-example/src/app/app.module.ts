@@ -53,8 +53,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { HardwareDashboardComponent } from './components/hardware-dashboard/hardware-dashboard.component';
 import { HardwareAddComponent } from './components/hardware-add/hardware-add.component';
 
+//Module class decorator to define a Angular Module and provide metadata about the module.
 @NgModule({
-  declarations: [
+  declarations: [       //Declare App component imported above in array
     AppComponent,
     ConfigurationWizardComponent,
     SystemConfigurationComponent,
@@ -65,7 +66,7 @@ import { HardwareAddComponent } from './components/hardware-add/hardware-add.com
     HardwareDashboardComponent,
     HardwareAddComponent,
   ],
-  imports: [
+  imports: [              //Add all the other Angular Modules that this module uses in the "import" array
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -108,6 +109,6 @@ import { HardwareAddComponent } from './components/hardware-add/hardware-add.com
   ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]     //AppComponent to be loaded when Angular starts.
 })
 export class AppModule { }

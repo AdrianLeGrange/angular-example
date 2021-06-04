@@ -10,3 +10,5 @@ Navigate to `http://localhost:4200/` to use the app.
 
 _Note: This server servers the json objects in the db.json file located at src/app/assets/mock-data/db.json_
 
+Helpfull info:
+https://www.tektutorialshub.com/angular/angular-component/
