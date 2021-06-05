@@ -1,12 +1,11 @@
 export enum PluginType {
-    STANDARD = 0,
-    CO2     = 1,
-    FLOW = 2
-
+    Standard = 0,
+    CO2 = 1,
+    Flow = 2
 }
 
 export const PluginTypeDescriptions = new Map<PluginType, string>([
-    [PluginType.STANDARD, 'Standard'],
-    [PluginType.CO2, 'Co2'],
-    [PluginType.FLOW, 'Flow'],
+    [PluginType.Standard, 'Standard'],
+    [PluginType.CO2, 'CO2'],
+    [PluginType.Flow, 'Flow'],
 ]); 

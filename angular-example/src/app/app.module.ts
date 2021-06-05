@@ -50,8 +50,10 @@ import { FlexModule } from '@angular/flex-layout';
 import { NumbersOnlyDirective } from '../app/directives/numbers-only.directive';
 import { TestComponent } from './components/test/test.component';
 import { HttpClientModule} from '@angular/common/http';
-import { HardwareDashboardComponent } from './components/hardware-dashboard/hardware-dashboard.component';
+import { PluginsComponent } from './components/plugins/plugins.component';
 import { HardwareAddComponent } from './components/hardware-add/hardware-add.component';
+import { PluginMappingComponent } from './components/plugin-mapping/plugin-mapping/plugin-mapping.component';
+
 
 //Module class decorator to define a Angular Module and provide metadata about the module.
 @NgModule({
@@ -63,8 +65,9 @@ import { HardwareAddComponent } from './components/hardware-add/hardware-add.com
     TestCompComponent,
     NumbersOnlyDirective,
     TestComponent,
-    HardwareDashboardComponent,
+    PluginsComponent,
     HardwareAddComponent,
+    PluginMappingComponent,
   ],
   imports: [              //Add all the other Angular Modules that this module uses in the "import" array
     BrowserModule,

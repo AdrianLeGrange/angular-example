@@ -1,0 +1,20 @@
+<mat-card>
+  <h1>Plugin Port Allocation </h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="port">
+        <th mat-header-cell *matHeaderCellDef> Port </th>
+        <td mat-cell *matCellDef="let port"> {{ port.number }} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="pluginList">
+        <th mat-header-cell *matHeaderCellDef> Allowed Plugin(s) </th>
+        <td mat-cell *matCellDef="let port"> {{ getPluginTypesDescription(port.allowedPlugins) }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <button mat-fill-button  color="primary" (click)="onCheckConfiguration()">Check Configuration</button>
+</mat-card>
+
+
